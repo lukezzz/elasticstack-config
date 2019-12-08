@@ -1,0 +1,22 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /usr/share/filebeat/cucm/cdr*
+  tags: ["cucm-cdr"]
+
+- type: log
+  enabled: true
+  paths:
+    - /usr/share/filebeat/cucm/cmr*
+  tags: ["cucm-cmr"]
+
+output.logstash:
+  hosts: ["logstash:5044"]
+  ssl.enabled: false
+
+#================================ Logging =====================================
+
+# Sets log level. The default log level is info.
+# Available log levels are: error, warning, info, debug
+logging.level: debug
